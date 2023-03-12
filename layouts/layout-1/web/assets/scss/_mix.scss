@@ -1,0 +1,17 @@
+.preview-symbol {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  >* {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+hr {
+  background: rgba(var(--ds-accent-rgb), 0.1);
+  opacity: 1;
+}

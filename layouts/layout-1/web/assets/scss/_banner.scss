@@ -1,0 +1,10 @@
+.banner {
+  padding: 12px 0;
+  border-radius: 12px;
+  background-color: rgba(var(--ds-accent-rgb), 0.1);
+  margin: 40px 0;
+
+  >* {
+    max-width: 100%;
+  }
+}

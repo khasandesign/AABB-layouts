@@ -1,0 +1,149 @@
+project affilate_blog {
+  database_type: 'SQL'
+}
+
+// Relationships
+ref: user.id < article.author_id [delete: set null, update: cascade]
+ref: category.id < article.category_id [delete: set null, update: cascade]
+ref: category.id < video.category_id [delete: set null, update: cascade]
+ref: article.id < article_tag.article_id [delete: cascade, update: cascade]
+ref: video.id < video_tag.video_id [delete: cascade, update: cascade]
+ref: article.id < product.article_id [delete: set null, update: cascade]
+ref: tag.id < article_tag.tag_id [delete: cascade, update: cascade]
+ref: tag.id < video_tag.tag_id [delete: cascade, update: cascade]
+ref: size.id < banner.size_id [delete: set null, update: cascade]
+
+table article {
+  id int [pk, increment]
+  title varchar [not null]
+  content text [not null, Note: 'HTML formatted']
+  created_at int [not null, default: 0]
+  visible boolean [default: 1]
+  
+  author_id int
+  category_id int
+}
+
+table product {
+  id int [pk, increment]
+  name varchar(64)
+  brand varchar(32)
+  description varchar
+  url varchar(2048)
+  image varchar(2048)
+  hot_deal boolean [default: 0]
+  
+  article_id int
+  
+  indexes {
+    hot_deal
+  }
+}
+
+table user {
+  id int [pk, increment]
+  username varchar [unique, not null]
+  auth_key varchar(32) [not null]
+  password_hash varchar [not null]
+  password_reset_token varchar [unique]
+  email varchar [unique, not null]
+  role smallint [default: 1]
+  status smallint [not null, default: 10]
+  created_at int [not null]
+  updated_at int [not null]
+  verification_token varchar [null]
+}
+
+table category {
+  id int [pk, increment]
+  name varchar(32) [not null]
+  title varchar(64) [not null]
+  description varchar
+  image varchar
+  source varchar(2048)
+  image_color varchar(16)
+  visible boolean [default: 1]
+}
+
+table video {
+  id int [pk, increment]
+  embed_url varchar(2048) [not null]
+  title varchar
+  author_name varchar
+  author_image varchar(2048)
+  author_url varchar(2048)
+  visible boolean [default: 1]
+  
+  category_id int
+}
+
+table tag {
+  id int [pk, increment]
+  tag varchar(32) [not null]
+}
+
+table article_tag {
+  article_id int
+  tag_id int [not null]
+  
+  indexes {
+    (article_id, tag_id) [unique]
+  }
+}
+
+table video_tag {
+  video_id int
+  tag_id int [not null]
+  
+  indexes {
+    (video_id, tag_id) [unique]
+  }
+}
+
+table banner {
+  id int [pk, increment]
+  src varchar(1024) [not null, Note: 'Source for iframe']
+  
+  size_id int [Note: 'Null hides banner']
+}
+
+table size {
+  id int [pk, increment]
+  width int [not null]
+  height int [not null]
+  
+  Note: 'Look up table for ad banners'
+}
+
+table website {
+  id char(1) [pk, default: 1]
+  name varchar [not null]
+  title varchar(64) [not null]
+  description varchar
+  image varchar
+  source varchar(2048)
+  email varchar(320) [not null]
+  ref_tag varchar(32)
+  ref_url varchar(2048)
+  category varchar(64)
+  created_at int [not null, default: 0]
+  accent_color varchar(11) [not null]
+  symbol text [Note: 'Symbol before your website name']
+  font_headline varchar(2048)
+  font_body varchar(2048)
+
+  Note: 'Some dynamic information about the website'
+}
+
+table email_list {
+  id int [pk, increment]
+  email varchar(320) [not null]
+  created_at int [not null]
+  updated_at int [not null]
+  unsubscribe_token varchar [not null]
+  active boolean [default: 1]
+  
+  indexes {
+    email
+  }
+}

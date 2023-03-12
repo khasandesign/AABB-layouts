@@ -1,0 +1,39 @@
+form {
+  >*:not(.btn:last-of-type) {
+    margin-bottom: 12px;
+  }
+}
+
+.form-group {
+  .form-info {
+    @extend .par-3;
+    @extend .medium;
+    color: var(--ds-label-2);
+    margin-bottom: 32px;
+  }
+  .form-footer {
+    @extend .caption;
+    @extend .medium;
+    color: var(--ds-label-3);
+    margin-top: 20px;
+  }
+  .form-hint {
+    @extend .caption;
+    @extend .medium;
+    color: var(--ds-label-3);
+    margin: 36px 0 20px 0;
+  }
+  .form-control-group {
+    display: flex;
+    gap: 12px;
+  }
+}
+
+// Bootstrap: xxs
+@media (max-width: 576px) {
+  .form-group {
+    .form-control-group {
+      flex-direction: column;
+    }
+  }
+}

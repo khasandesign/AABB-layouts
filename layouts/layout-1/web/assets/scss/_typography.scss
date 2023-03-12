@@ -1,0 +1,206 @@
+$unit: px;
+
+@mixin typoStyle($font-size, $line-height, $letter-spacing) {
+  font-size: $font-size + $unit;
+  line-height: $line-height + $unit;
+  letter-spacing: $letter-spacing + $unit;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: var(--ds-accent);
+  transition: 0.1s;
+
+  &:hover {
+    color: var(--ds-accent-hover);
+  }
+}
+
+.extra-bold {
+  font-weight: 800;
+}
+.bold {
+  font-weight: 700;
+}
+.semi-bold {
+  font-weight: 600;
+}
+.medium {
+  font-weight: 500;
+}
+.italic {
+  font-style: italic;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @extend .bold;
+  color: var(--ds-label-1);
+
+  &>* {
+    font-family: inherit;
+  }
+}
+h1 {
+  @include typoStyle(64, 68, 0);
+}
+h2 {
+  @include typoStyle(40, 48, 0);
+}
+h3 {
+  @include typoStyle(36, 42, 0);
+}
+h4 {
+  @include typoStyle(26, 36, -0.1);
+}
+h5 {
+  @include typoStyle(24, 32, -0.1);
+}
+h6 {
+  @include typoStyle(19, 26, -0.1);
+}
+
+.par-1 {
+  @include typoStyle(18, 27, 0);
+}
+.par-2 {
+  @include typoStyle(17, 26, 0);
+}
+.par-3 {
+  @include typoStyle(16, 22, 0);
+}
+.par-4 {
+  @include typoStyle(14, 22, -0.2);
+}
+.caption {
+  @include typoStyle(12, 20, -0.2);
+}
+
+.unselectable {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+// Bootstrap: xxl
+@media (max-width: 1400px) {
+  h1 {
+    @include typoStyle(56, 64, 0);
+  }
+  h2 {
+    @include typoStyle(36, 42, 0);
+  }
+  h3 {
+    @include typoStyle(32, 38, 0);
+  }
+  h4 {
+    @include typoStyle(24, 34, -0.1);
+  }
+  h5 {
+    @include typoStyle(22, 28, -0.1);
+  }
+  h6 {
+    @include typoStyle(17, 24, -0.1);
+  }
+
+  .par-1 {
+    @include typoStyle(17, 26, 0);
+  }
+  .par-2 {
+    @include typoStyle(16, 22, 0);
+  }
+  .par-3 {
+    @include typoStyle(15, 22, 0);
+  }
+  .par-4 {
+    @include typoStyle(14, 20, -0.2);
+  }
+  .caption {
+    @include typoStyle(12, 20, -0.2);
+  }
+}
+
+// Bootstrap: md
+@media (max-width: 992px) {
+  h1 {
+    @include typoStyle(48, 56, 0);
+  }
+  h2 {
+    @include typoStyle(32, 36, 0);
+  }
+  h3 {
+    @include typoStyle(26, 32, 0);
+  }
+  h4 {
+    @include typoStyle(22, 30, -0.1);
+  }
+  h5 {
+    @include typoStyle(20, 28, -0.1);
+  }
+  h6 {
+    @include typoStyle(17, 24, -0.1);
+  }
+
+  .par-1 {
+    @include typoStyle(16, 24, 0);
+  }
+  .par-2 {
+    @include typoStyle(15, 22, 0);
+  }
+  .par-3 {
+    @include typoStyle(14, 20, 0);
+  }
+  .par-4 {
+    @include typoStyle(13, 20, -0.2);
+  }
+  .caption {
+    @include typoStyle(11, 18, -0.2);
+  }
+}
+
+// Bootstrap: xs
+@media (max-width: 576px) {
+  h1 {
+    @include typoStyle(40, 48, 0);
+  }
+  h2 {
+    @include typoStyle(30, 32, 0);
+  }
+  h3 {
+    @include typoStyle(22, 28, 0);
+  }
+  h4 {
+    @include typoStyle(20, 24, -0.1);
+  }
+  h5 {
+    @include typoStyle(18, 24, -0.1);
+  }
+  h6 {
+    @include typoStyle(16, 22, -0.1);
+  }
+
+  .par-1 {
+    @include typoStyle(15, 22, 0);
+  }
+  .par-2 {
+    @include typoStyle(14, 20, 0);
+  }
+  .par-3 {
+    @include typoStyle(14, 20, 0);
+  }
+  .par-4 {
+    @include typoStyle(13, 20, -0.2);
+  }
+  .caption {
+    @include typoStyle(11, 18, -0.2);
+  }
+}

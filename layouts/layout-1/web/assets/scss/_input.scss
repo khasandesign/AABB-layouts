@@ -1,0 +1,48 @@
+.form-control {
+  @extend .par-2;
+  @extend .semi-bold;
+  border: none;
+  background-color: var(--ds-white);
+  color: var(--ds-label-1);
+  border-radius: 10px;
+  padding: 12px 20px;
+  
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgba(var(--ds-accent-rgb), 0.12);
+  }
+  &::placeholder {
+    color: var(--ds-label-4);
+  }
+  &::-webkit-resizer {
+    display: none;
+  }
+}
+
+.textarea-wrap {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  &:after {
+    content:"";
+    border-top: 1px solid var(--ds-label-3);
+    width: 11px;
+    transform: rotate(-45deg);
+    background:transparent;
+    position: absolute;
+    right: 5px;
+    bottom: 10px;
+    pointer-events: none;
+  }
+
+  .textarea-pull {
+    border-top: 1px solid var(--ds-label-3);
+    width: 5px;
+    transform: rotate(-45deg);
+    position: absolute;
+    bottom: 7px;
+    right: 5px;
+    pointer-events: none;
+  }
+}
+

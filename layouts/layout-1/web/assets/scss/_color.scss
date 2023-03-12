@@ -1,0 +1,26 @@
+:root {
+  // Accent
+  --ds-accent-rgb: 23, 77, 119;
+  --ds-accent: rgb(var(--ds-accent-rgb));
+  --ds-accent-hover: rgba(var(--ds-accent-rgb), 0.8);
+
+  // Background colors
+  --ds-bg: rgba(0,0,0, 0.08);
+  --ds-bg-accent: rgba(var(--ds-accent-rgb), 0.08);
+  --ds-bg-elevated: #fff;
+
+  // Solid colors
+  --ds-red: #DA4239;
+  --ds-white: #fff;
+
+  // Label colors
+  --ds-label-rgb: 0,0,0;
+  --ds-label-1: rgba(var(--ds-label-rgb), 1);
+  --ds-label-2: rgba(var(--ds-label-rgb), 0.6);
+  --ds-label-3: rgba(var(--ds-label-rgb), 0.4);
+  --ds-label-4: rgba(var(--ds-label-rgb), 0.3);
+}
+
+.text-accent {
+  color: var(--ds-accent);
+}
