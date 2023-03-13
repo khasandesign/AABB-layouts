@@ -54,7 +54,7 @@ function hexToRgb(hex, str = false) {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Attrach sidebar parts
+  // Attach sidebar parts
   if (window.innerWidth > 768) {
     attachSidebarParts()
   }
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Set category background color
   let feed = document.querySelector('.feed')
-  if (feed.hasAttribute('data-bg-color')) {
+  if ('bgColor' in feed.dataset && feed.dataset.bgColor) {
     document.body.style.setProperty('--ds-bg-accent', 'rgba(' + hexToRgb(feed.getAttribute('data-bg-color'), true) + ', 0.1)')
   }
 
