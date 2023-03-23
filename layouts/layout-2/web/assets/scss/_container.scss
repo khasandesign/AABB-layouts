@@ -1,0 +1,19 @@
+.container-fluid {
+  &.max-width {
+    max-width: 1920px;
+  }
+}
+
+// Bootstrap: lg
+@media (max-width: 1200px) {
+  .container-fluid {
+    padding: 0 24px;
+  }
+}
+
+// Boostrap: xsm
+@media (max-width: 576px) {
+  .container-fluid {
+    padding: 0 12px;
+  }
+}

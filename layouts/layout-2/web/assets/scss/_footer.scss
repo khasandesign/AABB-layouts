@@ -1,0 +1,35 @@
+footer {
+  position: relative;
+  bottom: 0;
+  padding: 16px;
+  
+  &.bottom-footer {
+    text-align: center;
+  }
+
+  .caption {
+    @extend .medium;
+    color: var(--ds-label-3);
+  }
+  a {
+    @extend .caption;
+    color: var(--ds-accent);
+  }
+  .footer-info {
+    margin-bottom: 20px;
+  }
+  .footer-links {
+    margin-bottom: 24px;
+
+    a {
+      &:not(:first-child)::before {
+        content: '\00B7';
+        padding-right: 8px;
+        color: var(--ds-label-3);
+      }
+    }
+  }
+  .footer-copywrite {
+    color: var(--ds-label-3);
+  }
+}

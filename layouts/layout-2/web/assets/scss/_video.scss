@@ -1,0 +1,24 @@
+.video {
+  .platter-inner {
+    .platter-ref {
+      margin-bottom: 0;
+    }
+  }
+  .video-title {
+    margin-bottom: 10px;
+  }
+  &.video-lg {
+    @extend .platter-lg-outer;
+  }
+  &.video-sm {
+    @extend .platter-sm-outer;
+
+    iframe {
+      width: 108.3%;
+    }
+
+    .video-title {
+      margin-bottom: 0;
+    }
+  }
+}
