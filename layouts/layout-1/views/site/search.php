@@ -24,7 +24,6 @@ use helpers\Component;
         } ?>
     </section>
     <?php
-    echo Component::component('banner', ['embed' => $banner['src']]);
     echo Component::component('sections/digest-form');
     echo Component::component('bottom-footer');
     ?>

@@ -2,7 +2,6 @@
 namespace controllers;
 
 include $_SERVER['DOCUMENT_ROOT'] . '/models/Article.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/models/Banner.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/models/Category.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/models/Product.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/models/Video.php';
@@ -12,7 +11,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/models/EmailList.php';
 
 use helpers\Text;
 use models\Article;
-use models\Banner;
 use models\Category;
 use models\Product;
 use models\Video;
@@ -38,13 +36,11 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $article_m = new Article();
-        $banner_m = new Banner();
         $category_m = new Category();
 
         // Feed
         $new_article = $article_m->getNewArticle();
         $categories = $category_m->getCategoriesContent();
-        $banners = $banner_m->getBanners();
 
         // Sidebar
         $sidebar = [
@@ -62,18 +58,16 @@ class SiteController extends Controller
             ]
         ];
 
-        return $this->render('index', ['new_article' => $new_article, 'categories' => $categories, 'banners' => $banners, 'sidebar' => $sidebar]);
+        return $this->render('index', ['new_article' => $new_article, 'categories' => $categories, 'sidebar' => $sidebar]);
     }
 
     public function actionCategory($id)
     {
         $category_m = new Category();
-        $banner_m = new Banner();
         $video_m = new Video();
 
         // Feed
         $category = $category_m->getCategoryContent($id);
-        $banners = $banner_m->getBanners();
         $rand_video = $video_m->getVideo();
 
         // Sidebar
@@ -89,19 +83,17 @@ class SiteController extends Controller
         ];
 
         $this->title = $category['name'];
-        return $this->render('category', ['category' => $category, 'banners' => $banners, 'rand_video' => $rand_video, 'sidebar' => $sidebar]);
+        return $this->render('category', ['category' => $category, 'rand_video' => $rand_video, 'sidebar' => $sidebar]);
     }
 
     public function actionBlog()
     {
         $article_m = new Article();
         $video_m = new Video();
-        $banner_m = new Banner();
 
         // Feed
         $articles = $article_m->getArticles();
         $videos = $video_m->getVideos();
-        $banners = $banner_m->getBanners();
 
         // Sidebar
         $sidebar = [
@@ -116,19 +108,17 @@ class SiteController extends Controller
         ];
 
         $this->title = 'Our Blog';
-        return $this->render('blog', ['articles' => $articles, 'videos' => $videos, 'banners' => $banners, 'sidebar' => $sidebar]);
+        return $this->render('blog', ['articles' => $articles, 'videos' => $videos, 'sidebar' => $sidebar]);
     }
 
     public function actionSearch($tag)
     {
         $article_m = new Article();
         $video_m = new Video();
-        $banner_m = new Banner();
 
         // Feed
         $articles = $article_m->getArticlesByTag($tag);
         $videos = $video_m->getVideosByTag($tag);
-        $banner = $banner_m->getBanner();
 
         // Sidebar
         $sidebar = [
@@ -139,14 +129,13 @@ class SiteController extends Controller
         ];
 
         $this->title = 'Search: ' . ucfirst($tag);
-        return $this->render('search', ['articles' => $articles, 'videos' => $videos, 'tag' => ucfirst($tag), 'banner' => $banner, 'sidebar' => $sidebar]);
+        return $this->render('search', ['articles' => $articles, 'videos' => $videos, 'tag' => ucfirst($tag), 'sidebar' => $sidebar]);
     }
 
     public function actionArticle($id, $ref = false)
     {
         $article_m = new Article();
         $video_m = new Video();
-        $banner_m = new Banner();
         $product_m = new Product();
 
         if (isset($ref) && $ref) {
@@ -159,7 +148,6 @@ class SiteController extends Controller
         // Feed
         $article = $article_m->getArticle($id);
         $products = $article_m->getArticleProducts($id);
-        $banners = $banner_m->getBanners();
         $see_also['article'] = $article_m->getArticle($id, true);
         $see_also['video'] = $video_m->getVideo();
 
@@ -173,7 +161,7 @@ class SiteController extends Controller
 
         $this->title = $article['title'];
         $this->description = Text::trimParagraphs($article['content'], 1);
-        return $this->render('article', ['article' => $article, 'products' => $products, 'banners' => $banners, 'see_also' => $see_also, 'sidebar' => $sidebar]);
+        return $this->render('article', ['article' => $article, 'products' => $products, 'see_also' => $see_also, 'sidebar' => $sidebar]);
     }
 
     public function actionPrivacyPolicy()

@@ -10,7 +10,7 @@
 use helpers\Component;
 ?>
 
-<div class="feed col-md-8">
+<div class="feed col-xxl-5 col-xl-6 col-lg-7 offset-xl-0 offset-lg-1 col-md-8">
     <section id="articles">
         <h4 class="section-heading">Tag: <span class="text-accent"><?= $tag ?></span></h4>
         <?php foreach ($articles as $article) {
@@ -24,7 +24,7 @@ use helpers\Component;
         } ?>
     </section>
     <?php
-    echo Component::component('banner', ['embed' => $banner['src']]);
+    echo Component::component('sections/digest-form');
     echo Component::component('bottom-footer');
     ?>
 </div>

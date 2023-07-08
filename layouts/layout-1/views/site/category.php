@@ -19,14 +19,12 @@ use helpers\Component;
     unset($category['articles'][0]);
     unset($category['videos'][0]);
 
-    echo Component::component('banner', ['embed' => $banners[array_rand($banners)]['src']]);
     echo Component::component('sections/category-content', [
         'category' => $category,
     ]);
     echo Component::component('sections/watch-also', [
         'video' => $rand_video
     ]);
-    echo Component::component('banner', ['embed' => $banners[array_rand($banners)]['src']]);
     echo Component::component('sections/digest-form');
     echo Component::component('bottom-footer');
     ?>

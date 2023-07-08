@@ -17,7 +17,6 @@ use helpers\Component;
         echo Component::component('sections/category-content', [
             'category' => $categories[$i],
         ]);
-        echo Component::component('banner', ['embed' => isset($banners[$i]) ? $banners[$i]['src'] : '']);
     }
     echo Component::component('sections/digest-form');
     echo Component::component('bottom-footer');

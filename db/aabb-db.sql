@@ -1,6 +1,6 @@
 -- SQL dump generated using DBML (dbml-lang.org)
 -- Database: MySQL
--- Generated at: 2023-03-13T18:29:31.830Z
+-- Generated at: 2023-07-08T11:45:30.118Z
 
 CREATE TABLE `article` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
@@ -72,18 +72,6 @@ CREATE TABLE `video_tag` (
   `tag_id` int NOT NULL
 );
 
-CREATE TABLE `banner` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `src` varchar(1024) NOT NULL COMMENT 'Source for iframe',
-  `size_id` int COMMENT 'Null hides banner'
-);
-
-CREATE TABLE `size` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `width` int NOT NULL,
-  `height` int NOT NULL
-);
-
 CREATE TABLE `website` (
   `id` char(1) PRIMARY KEY DEFAULT 1,
   `name` varchar(255) NOT NULL,
@@ -119,8 +107,6 @@ CREATE UNIQUE INDEX `video_tag_index_2` ON `video_tag` (`video_id`, `tag_id`);
 
 CREATE INDEX `email_list_index_3` ON `email_list` (`email`);
 
-ALTER TABLE `size` COMMENT = 'Look up table for ad banners';
-
 ALTER TABLE `website` COMMENT = 'Some dynamic information about the website';
 
 ALTER TABLE `article` ADD FOREIGN KEY (`author_id`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
@@ -138,5 +124,3 @@ ALTER TABLE `product` ADD FOREIGN KEY (`article_id`) REFERENCES `article` (`id`)
 ALTER TABLE `article_tag` ADD FOREIGN KEY (`tag_id`) REFERENCES `tag` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `video_tag` ADD FOREIGN KEY (`tag_id`) REFERENCES `tag` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE `banner` ADD FOREIGN KEY (`size_id`) REFERENCES `size` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;

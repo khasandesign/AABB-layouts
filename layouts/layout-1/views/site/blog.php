@@ -16,7 +16,6 @@ use helpers\Component;
             echo Component::component('article-md', ['article' => $article]);
         } ?>
     </section>
-    <?php echo Component::component('banner', ['embed' => $banners[array_rand($banners)]['src']]); ?>
     <section id="videos">
         <h4 class="section-heading">Videos</h4>
         <?php foreach ($videos as $video) {
@@ -24,7 +23,6 @@ use helpers\Component;
         } ?>
     </section>
     <?php
-    echo Component::component('banner', ['embed' => $banners[array_rand($banners)]['src']]);
     echo Component::component('sections/digest-form');
     echo Component::component('bottom-footer');
     ?>

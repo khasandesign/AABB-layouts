@@ -11,7 +11,6 @@ ref: video.id < video_tag.video_id [delete: cascade, update: cascade]
 ref: article.id < product.article_id [delete: set null, update: cascade]
 ref: tag.id < article_tag.tag_id [delete: cascade, update: cascade]
 ref: tag.id < video_tag.tag_id [delete: cascade, update: cascade]
-ref: size.id < banner.size_id [delete: set null, update: cascade]
 
 table article {
   id int [pk, increment]
@@ -96,21 +95,6 @@ table video_tag {
   indexes {
     (video_id, tag_id) [unique]
   }
-}
-
-table banner {
-  id int [pk, increment]
-  src varchar(1024) [not null, Note: 'Source for iframe']
-  
-  size_id int [Note: 'Null hides banner']
-}
-
-table size {
-  id int [pk, increment]
-  width int [not null]
-  height int [not null]
-  
-  Note: 'Look up table for ad banners'
 }
 
 table website {
