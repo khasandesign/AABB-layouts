@@ -25,7 +25,7 @@ table article {
 
 table product {
   id int [pk, increment]
-  name varchar(64)
+  name varchar(100)
   brand varchar(32)
   description varchar
   url varchar(2048)

@@ -14,7 +14,7 @@ CREATE TABLE `article` (
 
 CREATE TABLE `product` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `name` varchar(64),
+  `name` varchar(100),
   `brand` varchar(32),
   `description` varchar(255),
   `url` varchar(2048),
