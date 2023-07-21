@@ -10,7 +10,7 @@
 use helpers\Component;
 ?>
 
-<div class="feed col-xxl-5 col-xl-6 col-lg-7 offset-xl-0 offset-lg-1 col-md-8" data-bg-color="<?= $category['image_color'] ?>">
+<div class="feed col-xxl-8 col-xl-6 col-lg-7 offset-xl-0 offset-lg-1 col-md-8" data-bg-color="<?= $category['image_color'] ?>">
     <?php
     echo Component::component('sections/most-read', [
         'article' => $category['articles'][0],
