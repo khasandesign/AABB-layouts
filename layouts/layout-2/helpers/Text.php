@@ -67,18 +67,7 @@ class Text
      */
     public static function formatBrand($str, $separator = '&#8203')
     {
-        $words_arr = explode('&#8203', $str);
-        if (count($words_arr) > 2) {
-            for ($i = 0; $i < count($words_arr); $i++) {
-                if ($i == 0) {
-                    $words_arr[$i] .= '<br>';
-                } else if ($i % 2 == 0) {
-                    $words_arr[$i] .= '<br>';
-                }
-            }
-        }
-
-        return ucfirst(implode(' ', $words_arr));
+        return str_replace($separator, '<br>', $str);
     }
 
     /**
